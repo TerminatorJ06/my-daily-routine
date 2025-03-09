@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Jacob</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -18,46 +19,47 @@
 
         .main-container {
             width: 95%; /* Slightly wider on mobile screens */
-            max-width: 1000px; /* Still maintain max width on larger screens */
+            max-width: 1000px;
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px; /* Reduced padding for smaller screens */
+            padding: 15px; /* Further reduced base padding */
+            margin: 10px; /* Add some margin around container on all screens */
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced header margin */
         }
 
         .header h1 {
-            font-size: 2em; /* Slightly smaller header on mobile */
+            font-size: 2em;
             margin: 0;
             color: #88c0d0;
             font-weight: bold;
         }
 
         .date {
-            font-size: 1em; /* Slightly smaller date font on mobile */
+            font-size: 1em;
             color: #666;
         }
 
         .day-header {
             display: flex;
-            justify-content: center; /* Center days on smaller screens */
-            margin-bottom: 15px;
+            justify-content: center;
+            margin-bottom: 10px; /* Reduced day header margin */
         }
 
         .day-checklist-header {
             display: flex;
-            gap: 10px; /* Reduced gap between days on mobile */
+            gap: 8px;
             align-items: center;
         }
 
         .day-checklist-header label {
-            font-size: 1em; /* Day text size on mobile */
+            font-size: 1em;
             color: #777;
             display: flex;
             flex-direction: column;
@@ -72,7 +74,7 @@
         }
 
         .task-item {
-            padding: 15px 0; /* Reduced padding for task items on mobile */
+            padding: 12px 0; /* Further reduced task item padding */
             border-bottom: 1px solid #eee;
         }
 
@@ -82,9 +84,9 @@
 
         .task-header {
             display: flex;
-            flex-direction: column; /* Stack activity and days on mobile */
-            align-items: flex-start; /* Align to the start on mobile */
-            justify-content: flex-start; /* Align items to the start */
+            flex-direction: column; /* Stacked by default now */
+            align-items: flex-start;
+            justify-content: flex-start;
         }
 
         .task-left-content {
@@ -95,7 +97,7 @@
         .task-content {
             display: flex;
             flex-direction: column;
-            margin-left: 10px; /* Reduced margin on mobile */
+            margin-left: 10px;
             flex-grow: 1;
         }
 
@@ -103,24 +105,25 @@
             color: #a3be8c;
             font-weight: 500;
             white-space: nowrap;
-            margin-bottom: 4px;
-            font-size: 0.95em; /* Slightly smaller time font on mobile */
+            margin-bottom: 3px; /* Reduced time margin */
+            font-size: 0.9em; /* Further reduced time font size */
         }
 
         .task-item label {
             cursor: pointer;
-            font-size: 1.1em; /* Slightly smaller activity font on mobile */
+            font-size: 1.1em;
             font-weight: 500;
-            line-height: 1.4; /* Slightly reduced line height on mobile */
+            line-height: 1.3; /* Tighter line height for labels */
         }
 
         .task-details {
-            line-height: 1.4; /* Slightly reduced line height on mobile */
-            font-size: 0.9em; /* Slightly smaller details font on mobile */
+            line-height: 1.3; /* Tighter line height for details */
+            font-size: 0.85em;
             color: #777;
-            margin-top: 8px; /* Reduced margin on mobile */
+            margin-top: 6px; /* Further reduced details margin */
             padding-left: 0;
             margin-left: 0;
+            word-break: break-word; /* Ensure long words wrap in details */
         }
 
         .task-details p {
@@ -130,10 +133,10 @@
 
         .day-checklist {
             display: flex;
-            gap: 10px; /* Reduced gap for day checkboxes on mobile */
-            margin-top: 10px; /* Add some top margin to separate from activity on mobile */
+            gap: 8px;
+            margin-top: 8px; /* Further reduced day checklist margin */
             flex-shrink: 0;
-            justify-content: flex-start; /* Start align day checkboxes */
+            justify-content: flex-start;
         }
 
         .day-checklist label {
@@ -142,7 +145,7 @@
 
         .day-checkbox {
             appearance: none;
-            width: 18px; /* Slightly smaller day checkboxes on mobile */
+            width: 18px;
             height: 18px;
             border: 2px solid #ccc;
             border-radius: 4px;
@@ -164,7 +167,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 12px; /* Slightly smaller checkmark on mobile */
+            font-size: 12px;
         }
 
 
@@ -172,8 +175,8 @@
             width: 100%;
             background-color: #f0f0f0;
             border-radius: 8px;
-            height: 8px; /* Slightly smaller progress bar on mobile */
-            margin-top: 20px; /* Reduced margin on mobile */
+            height: 6px; /* Further reduced progress bar height */
+            margin-top: 15px;
             overflow: hidden;
         }
 
@@ -185,92 +188,126 @@
         }
 
         .points {
-            margin-top: 15px; /* Reduced margin on mobile */
+            margin-top: 10px; /* Further reduced points margin */
             text-align: right;
-            font-size: 1.1em; /* Slightly smaller points font on mobile */
+            font-size: 1em; /* Further reduced points font */
             color: #444;
         }
 
-        /* Media Query for Mobile Devices (Screens less than 768px wide) */
-        @media (max-width: 768px) {
+        /* Media Query for Mobile Devices (Screens less than 576px - Extra Small Devices) */
+        @media (max-width: 576px) { /* Breakpoint adjusted to 576px for smaller mobiles */
             .main-container {
-                border-radius: 0; /* Remove border-radius on very small screens for full width */
-                box-shadow: none; /* Remove shadow for cleaner look on mobile */
-                padding: 15px; /* Further reduced padding on very small screens */
-                width: 100%; /* Take full width on mobile */
-                margin: 0; /* Remove extra margins on mobile */
+                border-radius: 0;
+                box-shadow: none;
+                padding: 10px; /* Even less padding on very small mobiles */
+                width: 100%;
+                margin: 0; /* Remove margin in media query for full width */
             }
 
             .header {
-                flex-direction: column; /* Stack header elements on mobile */
-                text-align: center; /* Center header text on mobile */
-                margin-bottom: 15px; /* Slightly reduced bottom margin for header on mobile */
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 10px; /* Even less header margin on smallest screens */
             }
 
             .header h1 {
-                font-size: 1.8em; /* Even smaller header on very small screens */
+                font-size: 1.6em; /* Even smaller header font on smallest screens */
             }
 
             .date {
-                font-size: 0.9em; /* Even smaller date font on very small screens */
+                font-size: 0.85em; /* Even smaller date font on smallest screens */
             }
 
             .day-header {
-                justify-content: center; /* Center days header on smaller screens */
+                margin-bottom: 8px; /* Even less day header margin on smallest screens */
             }
 
             .day-checklist-header {
-                gap: 8px; /* Further reduce gap between days on very small screens */
+                gap: 6px; /* Even less gap between days on smallest screens */
             }
 
             .day-checklist-header label {
-                font-size: 0.9em; /* Day text size on very small screens */
+                font-size: 0.9em; /* Even smaller day text on smallest screens */
             }
 
 
             .task-item {
-                padding: 12px 0; /* Even less padding for task items on very small screens */
+                padding: 10px 0; /* Even less padding for task items on smallest screens */
             }
 
 
             .task-content {
-                margin-left: 8px; /* Even less margin on very small screens */
+                margin-left: 6px; /* Even less task content margin on smallest screens */
             }
 
 
             .task-item label {
-                font-size: 1em; /* Even smaller activity font on very small screens */
+                font-size: 1em; /* Even smaller task label font on smallest screens */
             }
 
             .task-details {
-                font-size: 0.85em; /* Even smaller details font on very small screens */
-                margin-top: 6px; /* Even less margin on very small screens */
+                font-size: 0.8em; /* Even smaller task details font on smallest screens */
+                margin-top: 5px; /* Even less task details margin on smallest screens */
             }
 
             .day-checklist {
-                 gap: 8px; /* Further reduced gap for day checkboxes on very small screens */
-                 margin-top: 8px; /* Even less top margin for days checklist on very small screens */
+                 gap: 6px; /* Even less gap for day checkboxes on smallest screens */
+                 margin-top: 6px; /* Even less day checklist margin on smallest screens */
             }
 
             .day-checkbox {
-                width: 16px; /* Even smaller day checkboxes on very small screens */
+                width: 16px;
                 height: 16px;
             }
 
             .day-checkbox:checked::before {
-                font-size: 11px; /* Even smaller checkmark on very small screens */
+                font-size: 11px;
             }
 
              .progress-bar {
-                height: 6px; /* Even smaller progress bar on very small screens */
-                margin-top: 15px; /* Even less margin on very small screens */
+                height: 5px; /* Even smaller progress bar on smallest screens */
+                margin-top: 10px; /* Even less progress bar margin on smallest screens */
             }
 
             .points {
-                font-size: 1em; /* Even smaller points font on very small screens */
-                margin-top: 15px; /* Even less margin on very small screens */
+                font-size: 0.9em; /* Even smaller points font on smallest screens */
+                margin-top: 10px; /* Even less points margin on smallest screens */
             }
         }
+
+        /* Media Query for Tablets and larger Mobiles (Larger than 576px, less than 768px) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            .main-container {
+                 padding: 20px; /* Restore some padding for medium screens */
+            }
+             .header h1 {
+                font-size: 2.2em; /* Slightly larger header font for medium screens */
+            }
+            .date {
+                font-size: 1.05em; /* Slightly larger date font for medium screens */
+            }
+            .day-checklist-header label {
+                font-size: 1.05em; /* Slightly larger day text for medium screens */
+            }
+            .task-item label {
+                font-size: 1.15em; /* Slightly larger task label font for medium screens */
+            }
+            .task-details {
+                font-size: 0.9em; /* Slightly larger task details font for medium screens */
+            }
+            .day-checklist {
+                 gap: 15px; /* Slightly larger gap for day checkboxes on medium screens */
+            }
+             .progress-bar {
+                height: 7px; /* Slightly larger progress bar on medium screens */
+            }
+            .points {
+                font-size: 1.1em; /* Slightly larger points font for medium screens */
+            }
+        }
+
+
+        /* Desktop styles remain largely the same, or can be adjusted outside media queries */
 
 
     </style>
