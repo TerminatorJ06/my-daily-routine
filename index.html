@@ -15,6 +15,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+             /* Paper texture background */
+            background-image: url('paper-texture.jpg'); /* Replace with your paper texture image URL or data URL */
+            background-repeat: repeat;
+            background-color: #f9f9f9; /* Fallback background color, adjust to blend with texture */
         }
 
         .main-container {
@@ -226,9 +230,9 @@
         .task-item:first-child .day-checklist-header {
             margin-bottom: 10px;
             justify-content: flex-end;
-            gap: 7px;
-            width: auto;
-            margin-left: 726px;
+            gap: 8px;
+            width: fit-content;
+            margin-left: auto;
         }
 
         .task-item:not(:first-child) .day-checklist-header {
@@ -253,7 +257,7 @@
 
 
         .task-item:first-child .day-checklist-header label {
-            font-size: 0.65em;
+            font-size: 0.95em;
             color: #777;
             font-weight: bold;
             white-space: nowrap;
@@ -261,6 +265,9 @@
             top: auto;
             right: auto;
             display: block;
+            text-align: right; /* Right-align the text within day labels */
+            padding-right: 5px; /* Add a little padding for visual spacing */
+            box-sizing: border-box; /* Include padding in label's width calculation */
         }
 
 
@@ -324,6 +331,8 @@
                 position: static;
                 top: auto;
                 right: auto;
+                text-align: center; /* Center text on mobile for better spacing */
+                padding-right: 0; /* Remove right padding on mobile */
             }
 
 
@@ -746,11 +755,19 @@
                 }
             });
 
-            const totalDays = dayCheckboxes.length;
-            const percentage = (completedDays / totalDays) * 100;
+            const totalCheckboxes = dayCheckboxes.length; // Corrected total count
+            const percentage = (completedDays / totalCheckboxes) * 100;
             document.getElementById('progress').style.width = percentage + '%';
-            document.getElementById('points').textContent = `Days Completed: ${completedDays}/${totalDays}`;
+            document.getElementById('points').textContent = `Days Completed: ${completedDays}/${totalCheckboxes}`;
         }
+
+        // Get all day checkboxes
+        const dayCheckboxes = document.querySelectorAll('.day-checkbox');
+
+        // Add event listener to each checkbox
+        dayCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateProgress);
+        });
 
 
         // Initial progress update
