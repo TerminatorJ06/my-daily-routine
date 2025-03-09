@@ -316,26 +316,38 @@
             }
 
             .task-item:first-child .day-checklist-header {
-                /* Changed to space-between for mobile alignment */
-                justify-content: space-between;
-                gap: 0;
+                /* Changed to flex-start and column direction for alignment */
+                justify-content: flex-start; /* Align items to the start (left) */
+                flex-direction: column; /* Stack labels and checkboxes vertically */
+                align-items: center; /* Center items horizontally in column */
+                gap: 2px; /* Reduced gap between label and checkboxes */
+                margin-bottom: 5px; /* Reduced margin below header */
                 margin-left: 0;
-                width: 100%;
+                width: auto; /* Day header width adjusts to content */
             }
 
             .task-item:first-child .day-checklist-header .day-label-container {
-                width: auto;
-                 flex-grow: 1; /* Allow day labels to take equal space */
-                 text-align: center; /* Center day labels in their container on mobile */
+                width: auto; /* Adjust width to content */
+                flex-grow: 0; /* Don't grow, fit to content */
+                text-align: center; /* Center day labels */
+                margin-left: 0; /* Reset any left margin */
+                margin-right: 0; /* Reset right margin */
+                padding: 0; /* Reset padding */
             }
 
             .task-item:first-child .day-checklist-header label {
-                font-size: 0.9em;
+                font-size: 0.8em; /* Reduced font size */
                 position: static;
                 top: auto;
                 right: auto;
                 text-align: center;
                 padding-right: 0;
+                margin-bottom: 2px; /* Add a little bottom margin to labels */
+            }
+
+             .task-item:first-child .day-checklist {
+                justify-content: center; /* Center checkboxes in column */
+                gap: 4px; /* Reduced gap between checkboxes */
             }
 
 
