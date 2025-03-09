@@ -316,40 +316,40 @@
             }
 
             .task-item:first-child .day-checklist-header {
-                /* Changed to flex-start and column direction for alignment */
-                justify-content: flex-start; /* Align items to the start (left) */
-                flex-direction: column; /* Stack labels and checkboxes vertically */
-                align-items: center; /* Center items horizontally in column */
-                gap: 2px; /* Reduced gap between label and checkboxes */
-                margin-bottom: 5px; /* Reduced margin below header */
+                /* Reverted to row direction, adjust spacing and alignment */
+                display: flex;
+                flex-direction: row; /* Back to row direction */
+                justify-content: space-around; /* Distribute space evenly */
+                align-items: flex-start; /* Align items to the top */
+                gap: 6px; /* Adjust gap between day columns */
+                margin-bottom: 10px; /* Keep some bottom margin */
                 margin-left: 0;
-                width: auto; /* Day header width adjusts to content */
+                width: 100%;
             }
 
             .task-item:first-child .day-checklist-header .day-label-container {
-                width: auto; /* Adjust width to content */
-                flex-grow: 0; /* Don't grow, fit to content */
+                width: calc(100% / 6); /* Divide header width by 6 for days */
+                flex-grow: 0; /* Don't grow beyond calculated width */
                 text-align: center; /* Center day labels */
-                margin-left: 0; /* Reset any left margin */
-                margin-right: 0; /* Reset right margin */
-                padding: 0; /* Reset padding */
+                margin-left: 0;
+                margin-right: 0;
+                padding: 0;
             }
 
             .task-item:first-child .day-checklist-header label {
-                font-size: 0.8em; /* Reduced font size */
+                font-size: 0.75em; /* Even smaller font size for very narrow screens */
                 position: static;
                 top: auto;
                 right: auto;
                 text-align: center;
                 padding-right: 0;
-                margin-bottom: 2px; /* Add a little bottom margin to labels */
+                margin-bottom: 0; /* Remove bottom margin from labels */
             }
 
              .task-item:first-child .day-checklist {
-                justify-content: center; /* Center checkboxes in column */
-                gap: 4px; /* Reduced gap between checkboxes */
+                justify-content: center; /* Center checkboxes */
+                gap: 4px; /* Reduced checkbox gap */
             }
-
 
             .task-item {
                 padding: 10px 0;
