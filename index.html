@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            width: 90%;
+            max-width: 1000px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #88c0d0; /* Pastel Blue */
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .day-checklist-header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .day-checklist-header label {
+            font-size: 1.1em;
+            color: #777;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: bold;
+        }
+
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-header {
+            display: flex;
+            align-items: flex-start; /* Align items to the top */
+            justify-content: space-between;
+        }
+
+        .task-left-content {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+            flex-grow: 1;
+        }
+
+        .task-time {
+            color: #a3be8c;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-bottom: 4px;
+            font-size: 1.0em;
+        }
+
+        .task-item label {
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .task-details {
+            line-height: 1.5;
+            font-size: 0.95em;
+            color: #777; /* Lighter color for details */
+            margin-top: 10px;
+            padding-left: 0;
+            margin-left: 15px; /* Removed any margin that might cause indent */
+        }
+
+        .task-details p {
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+        }
+
+        .day-checklist {
+            display: flex;
+            gap: 20px;
+            margin-top: 0;
+            flex-shrink: 0;
+        }
+
+        .day-checklist label {
+            /* Removed styling for day labels within task items */
+        }
+
+        .day-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            margin-top: 0;
+        }
+
+        .day-checkbox:checked {
+            background-color: #a3be8c;
+            border-color: #a3be8c;
+        }
+
+        .day-checkbox:checked::before {
+            content: '\2713';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+        }
+
+
+        .progress-bar {
+            width: 100%;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            height: 10px;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #007aff;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .points {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 1.2em;
+            color: #444;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>Jacob</h1>
+            <div class="date" id="currentDate"></div>
+        </div>
+
+        <div class="day-header">
+            <div class="day-checklist-header">
+                <label>Mon</label>
+                <label>Tue</label>
+                <label>Wed</label>
+                <label>Thu</label>
+                <label>Fri</label>
+                <label>Sat</label>
+            </div>
+        </div>
+
+
+        <ul class="task-list" id="taskList">
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">7:00 AM - 7:30 AM</div>
+                            <label for="task1">Wake Up & Hydrate</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>Drink 16oz of water with lemon</p>
+                    <p>5-minute stretching to activate your body</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">7:30 AM - 8:30 AM</div>
+                            <label for="task2">Exercise</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>30-45 minutes of moderate exercise (alternate between cardio and strength training)</p>
+                    <p>10-15 minutes for cool down and shower</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">8:30 AM - 9:30 AM</div>
+                            <label for="task3">Breakfast & Mental Preparation</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>Balanced breakfast: Oatmeal with berries and nuts, or eggs with vegetables and whole grain toast</p>
+                    <p>15 minutes for meal planning/preparation for the day</p>
+                    <p>15 minutes for meditation/journaling</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">9:30 AM - 10:30 AM</div>
+                            <label for="task4">Learning & Skill Development</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>30 minutes of reading (industry news, professional development)</p>
+                    <p>30 minutes of online course/study time</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">10:30 AM - 1:30 PM</div>
+                            <label for="task5">Work (First Half)</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>First hour: Handle high-priority tasks requiring focus</p>
+                    <p>Second hour: Meetings/collaborative work</p>
+                    <p>Third hour: Continue with important projects</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">1:30 PM - 2:30 PM</div>
+                            <label for="task6">Lunch Break</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>30 minutes: Nutritious lunch (lean protein, vegetables, whole grains)</p>
+                    <p>15 minutes: Short walk outside</p>
+                    <p>15 minutes: Quick review of afternoon priorities</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">2:30 PM - 5:30 PM</div>
+                            <label for="task7">Work (Second Half)</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>First hour: Continue with important tasks</p>
+                    <p>Second hour: Administrative work, emails, planning</p>
+                    <p>Final hour: Wrap up daily work, prepare for tomorrow</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">5:30 PM - 7:00 PM</div>
+                            <label for="task8">Job Search & Professional Development</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>45 minutes: Job applications, networking, updating professional profiles</p>
+                    <p>45 minutes: Communication skills practice (Speaking practice, writing practice)</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">7:00 PM - 8:00 PM</div>
+                            <label for="task9">Dinner & Break</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>Balanced dinner: Lean protein, complex carbohydrates, plenty of vegetables</p>
+                    <p>Short period of relaxation/family time</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">8:00 PM - 9:30 PM</div>
+                            <label for="task10">Social Time/Personal Interests</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>Family interaction, hobbies, or light physical activity</p>
+                    <p>Alternate evenings for social connections (in-person or virtual)</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">9:30 PM - 11:30 PM</div>
+                            <label for="task11">Studying & Preparation</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>First hour: Focused study time for career advancement</p>
+                    <p>Second hour: Prepare for tomorrow (clothes, meals, review schedule)</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">11:30 PM - 12:00 AM</div>
+                            <label for="task12">Wind-Down Routine</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>Digital devices off</p>
+                    <p>Light reading (physical book)</p>
+                    <p>Relaxation techniques (breathing exercises, gentle stretching)</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">12:00 AM - 7:00 AM</div>
+                            <label for="task13">Sleep</label>
+                        </div>
+                    </div>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                        <label><input type="checkbox" class="day-checkbox"></label>
+                    </div>
+                </div>
+                <div class="task-details">
+                    <p>7 hours of quality sleep</p>
+                    <p>Keep bedroom cool, dark, and quiet</p>
+                </div>
+            </li>
+        </ul>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="points" id="points">Days Completed: 0/78</div>
+    </div>
+
+    <script>
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        updateDate();
+
+        function updateProgress() {
+            const dayCheckboxes = document.querySelectorAll('.day-checkbox');
+            let completedDays = 0;
+            dayCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    completedDays++;
+                }
+            });
+
+            const totalDays = dayCheckboxes.length;
+            const percentage = (completedDays / totalDays) * 100;
+            document.getElementById('progress').style.width = percentage + '%';
+            document.getElementById('points').textContent = `Days Completed: ${completedDays}/${totalDays}`;
+        }
+
+
+        // Initial progress update
+        updateProgress();
+    </script>
+</body>
+</html>
+```
