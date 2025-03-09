@@ -15,10 +15,9 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-             /* Paper texture background */
-            background-image: url('paper-texture.jpg'); /* Replace with your paper texture image URL or data URL */
+            background-image: url('paper-texture.jpg'); /* Replace with your paper texture image URL */
             background-repeat: repeat;
-            background-color: #f9f9f9; /* Fallback background color, adjust to blend with texture */
+            background-color: #f9f9f9; /* Fallback background color */
         }
 
         .main-container {
@@ -44,7 +43,6 @@
             align-items: flex-start;
         }
 
-
         .header h1 {
             font-size: 2.2em;
             margin: 0;
@@ -63,7 +61,6 @@
             align-items: flex-end;
             margin-top: 10px;
         }
-
 
         .progress-bar {
             width: 100%;
@@ -88,24 +85,6 @@
             margin-top: 0;
         }
 
-
-        .day-header {
-            /* Removed Day Header Styles */
-        }
-
-        .day-checklist-header {
-            /* Will be styled within task item */
-        }
-
-        .day-label-container {
-            /* Will be styled within task item */
-        }
-
-        .day-checklist-header label {
-            /* Will be styled within task item */
-        }
-
-
         .task-list {
             list-style: none;
             padding: 0;
@@ -116,11 +95,6 @@
             border-bottom: 1px solid #eee;
             position: relative;
         }
-
-        .task-item:first-child .day-checklist-header {
-            display: flex;
-        }
-
 
         .task-item:last-child {
             border-bottom: none;
@@ -163,10 +137,8 @@
         .task-details {
             line-height: 1.3;
             font-size: 0.85em;
-            color: #888; /* Lighter color for details text */
+            color: #888;
             margin-top: 6px;
-            padding-left: 0;
-            margin-left: 0;
             word-break: break-word;
         }
 
@@ -181,10 +153,6 @@
             margin-top: 0;
             flex-shrink: 0;
             justify-content: flex-end;
-        }
-
-        .day-checklist label {
-            /* Removed styling for day labels within task items */
         }
 
         .day-checkbox {
@@ -214,62 +182,27 @@
             font-size: 12px;
         }
 
-
-        .progress-bar {
-            /* Rest of progress bar styles are in .header and .progress-container */
-        }
-
-        .progress {
-            /* Progress styles remain the same */
-        }
-
-        .points {
-            /* Points styles are in .header and .progress-container */
-        }
-
-        .task-item:first-child .day-checklist-header {
-            margin-bottom: 10px;
+        .day-checklist-header {
+            display: flex;
             justify-content: flex-end;
             gap: 8px;
-            width: fit-content;
-            margin-left: auto;
+            margin-bottom: 10px;
         }
 
-        .task-item:not(:first-child) .day-checklist-header {
-            display: none;
-        }
-
-
-        .task-item:first-child .day-checklist-header .day-label-container {
+        .day-label-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
             text-align: center;
             width: auto;
-            margin-left: 8px;
         }
 
-
-        .task-item:first-child .day-checklist-header .day-label-container:first-child {
-             margin-left: 0;
-        }
-
-
-        .task-item:first-child .day-checklist-header label {
+        .day-label-container label {
             font-size: 0.95em;
             color: #777;
             font-weight: bold;
             white-space: nowrap;
-            position: static;
-            top: auto;
-            right: auto;
-            display: block;
-            text-align: right; /* Right-align the text within day labels */
-            padding-right: 5px; /* Add a little padding for visual spacing */
-            box-sizing: border-box; /* Include padding in label's width calculation */
         }
-
 
         /* Media Query for Mobile Devices (Screens less than 576px) */
         @media (max-width: 576px) {
@@ -305,61 +238,27 @@
                 margin-top: 8px;
             }
 
-
-            .progress-bar {
-                margin-bottom: 3px;
-            }
-
-
-            .day-header {
-                /* Removed Mobile Day Header Styles */
-            }
-
-            .task-item:first-child .day-checklist-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly; /* Try space-evenly */
-                align-items: center; /* Center items vertically in header row */
-                gap: 4px; /* Further reduced gap */
-                margin-bottom: 10px;
-                margin-left: 0;
-                width: 100%;
-            }
-
-            .task-item:first-child .day-checklist-header .day-label-container {
-                flex-basis: calc(100% / 6); /* Use flex-basis for equal widths */
-                flex-grow: 0;
-                flex-shrink: 0;
-                text-align: center;
-                margin: 0; /* Reset margins */
-                padding: 0; /* Reset padding */
-            }
-
-            .task-item:first-child .day-checklist-header label {
-                font-size: 0.7em; /* Even smaller font */
-                position: static;
-                top: auto;
-                right: auto;
-                text-align: center;
-                padding: 0; /* Reset padding */
-                margin: 0; /* Reset margins */
-                line-height: 1; /* Tighter line height */
-            }
-
-             .task-item:first-child .day-checklist {
-                justify-content: center;
+            .day-checklist-header {
+                justify-content: space-between;
                 gap: 4px;
+            }
+
+            .day-label-container {
+                flex: 1;
+                text-align: center;
+            }
+
+            .day-label-container label {
+                font-size: 0.7em;
             }
 
             .task-item {
                 padding: 10px 0;
             }
 
-
             .task-content {
                 margin-left: 6px;
             }
-
 
             .task-item label {
                 font-size: 1em;
@@ -371,50 +270,53 @@
             }
 
             .day-checklist {
-                 gap: 6px;
-                 margin-top: 0;
-                 justify-content: center;
+                justify-content: space-between;
+                gap: 4px;
             }
         }
 
         /* Media Query for Tablets and larger Mobiles (Larger than 576px, less than 768px) */
         @media (min-width: 577px) and (max-width: 768px) {
             .main-container {
-                 padding: 20px;
+                padding: 20px;
             }
-             .header h1 {
+
+            .header h1 {
                 font-size: 2.4em;
             }
+
             .date {
                 font-size: 1.05em;
             }
+
             .progress-container {
-                 margin-top: 12px;
+                margin-top: 12px;
             }
+
             .task-item:first-child .day-checklist-header label {
                 font-size: 1em;
             }
+
             .task-item label {
                 font-size: 1.15em;
             }
+
             .task-details {
                 font-size: 0.9em;
             }
+
             .day-checklist {
-                 gap: 15px;
+                gap: 15px;
             }
-             .progress-bar {
+
+            .progress-bar {
                 height: 7px;
             }
+
             .points {
                 font-size: 1.1em;
             }
         }
-
-
-        /* Desktop styles remain largely the same */
-
-
     </style>
 </head>
 <body>
@@ -431,7 +333,6 @@
                 <div class="points" id="points">Days Completed: 0/78</div>
             </div>
         </div>
-
 
         <ul class="task-list" id="taskList">
             <li class="task-item">
@@ -455,29 +356,30 @@
                         <label>Sat</label>
                     </div>
                 </div>
-
-                <li class="task-item">
-                    <div class="task-header">
-                        <div class="task-left-content">
-                            <div class="task-content">
-                                <div class="task-time">7:00 AM - 7:30 AM</div>
-                                <label for="task1">Wake Up & Hydrate</label>
-                                <div class="task-details">
-                                    <p>Drink 16oz of water with lemon</p>
-                                    <p>5-minute stretching to activate your body</p>
-                                </div>
+            </li>
+            <!-- Task Items -->
+            <li class="task-item">
+                <div class="task-header">
+                    <div class="task-left-content">
+                        <div class="task-content">
+                            <div class="task-time">7:00 AM - 7:30 AM</div>
+                            <label for="task1">Wake Up & Hydrate</label>
+                            <div class="task-details">
+                                <p>Drink 16oz of water with lemon</p>
+                                <p>5-minute stretching to activate your body</p>
                             </div>
                         </div>
-                        <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
-                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
-                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
-                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
-                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
-                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
-                        </div>
                     </div>
-                </li>
+                    <div class="day-checklist">
+                        <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                        <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                        <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                        <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                        <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                        <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
+                    </div>
+                </div>
+            </li>
                 <li class="task-item">
                     <div class="task-header">
                         <div class="task-left-content">
@@ -745,11 +647,7 @@
                         </div>
                     </div>
                 </li>
-        </ul>
-        <div class="progress-bar">
-            </div>
-        <div class="points">
-             </div>
+         </ul>
     </div>
 
     <script>
@@ -767,30 +665,23 @@
 
             dayLabels.forEach(day => {
                 const dayCheckboxes = document.querySelectorAll(`.day-checkbox[data-day="${day}"]`);
-                // Check if ALL checkboxes for the current day are checked
                 const allChecked = Array.from(dayCheckboxes).every(checkbox => checkbox.checked);
                 if (allChecked) {
                     completedDays++;
                 }
             });
 
-
-            const totalPossibleDays = dayLabels.length; // Total possible days is just the number of day labels
+            const totalPossibleDays = dayLabels.length;
             const percentage = (completedDays / totalPossibleDays) * 100;
             document.getElementById('progress').style.width = percentage + '%';
             document.getElementById('points').textContent = `Days Completed: ${completedDays}/${totalPossibleDays}`;
         }
 
-        // Get all day checkboxes
         const dayCheckboxes = document.querySelectorAll('.day-checkbox');
-
-        // Add event listener to each checkbox
         dayCheckboxes.forEach(checkbox => {
             checkbox.addEventListener('change', updateProgress);
         });
 
-
-        // Initial progress update
         updateProgress();
     </script>
 </body>
