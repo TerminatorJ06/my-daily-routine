@@ -316,7 +316,8 @@
             }
 
             .task-item:first-child .day-checklist-header {
-                justify-content: space-around;
+                /* Changed to space-between for mobile alignment */
+                justify-content: space-between;
                 gap: 0;
                 margin-left: 0;
                 width: 100%;
@@ -324,6 +325,8 @@
 
             .task-item:first-child .day-checklist-header .day-label-container {
                 width: auto;
+                 flex-grow: 1; /* Allow day labels to take equal space */
+                 text-align: center; /* Center day labels in their container on mobile */
             }
 
             .task-item:first-child .day-checklist-header label {
@@ -331,8 +334,8 @@
                 position: static;
                 top: auto;
                 right: auto;
-                text-align: center; /* Center text on mobile for better spacing */
-                padding-right: 0; /* Remove right padding on mobile */
+                text-align: center;
+                padding-right: 0;
             }
 
 
@@ -454,12 +457,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -476,12 +479,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -499,12 +502,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -521,12 +524,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -544,12 +547,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -566,12 +569,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -588,12 +591,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -610,12 +613,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -632,12 +635,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -654,12 +657,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -676,12 +679,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -699,12 +702,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -721,12 +724,12 @@
                             </div>
                         </div>
                         <div class="day-checklist">
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
-                            <label><input type="checkbox" class="day-checkbox"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Mon"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Tue"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Wed"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Thu"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Fri"></label>
+                            <label><input type="checkbox" class="day-checkbox" data-day="Sat"></label>
                         </div>
                     </div>
                 </li>
@@ -747,18 +750,23 @@
         updateDate();
 
         function updateProgress() {
-            const dayCheckboxes = document.querySelectorAll('.day-checkbox');
+            const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
             let completedDays = 0;
-            dayCheckboxes.forEach(checkbox => {
-                if (checkbox.checked) {
+
+            dayLabels.forEach(day => {
+                const dayCheckboxes = document.querySelectorAll(`.day-checkbox[data-day="${day}"]`);
+                // Check if ALL checkboxes for the current day are checked
+                const allChecked = Array.from(dayCheckboxes).every(checkbox => checkbox.checked);
+                if (allChecked) {
                     completedDays++;
                 }
             });
 
-            const totalCheckboxes = dayCheckboxes.length; // Corrected total count
-            const percentage = (completedDays / totalCheckboxes) * 100;
+
+            const totalPossibleDays = dayLabels.length; // Total possible days is just the number of day labels
+            const percentage = (completedDays / totalPossibleDays) * 100;
             document.getElementById('progress').style.width = percentage + '%';
-            document.getElementById('points').textContent = `Days Completed: ${completedDays}/${totalCheckboxes}`;
+            document.getElementById('points').textContent = `Days Completed: ${completedDays}/${totalPossibleDays}`;
         }
 
         // Get all day checkboxes
