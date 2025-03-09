@@ -29,15 +29,15 @@
 
         .header {
             display: flex;
-            justify-content: space-between; /* Title left, progress right */
-            align-items: flex-start; /* Align items to the start of container */
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 15px;
         }
 
         .header-left {
             display: flex;
-            flex-direction: column; /* Stack title and date */
-            align-items: flex-start; /* Left align in column */
+            flex-direction: column;
+            align-items: flex-start;
         }
 
 
@@ -55,9 +55,9 @@
 
         .progress-container {
             display: flex;
-            flex-direction: column; /* Stack progress bar and points */
-            align-items: flex-end; /* Right align content */
-            margin-top: 10px; /* Add some top margin to progress block */
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 10px;
         }
 
 
@@ -67,7 +67,7 @@
             border-radius: 8px;
             height: 6px;
             overflow: hidden;
-            margin-bottom: 5px; /* Space between progress bar and points */
+            margin-bottom: 5px;
         }
 
         .progress {
@@ -81,7 +81,7 @@
             text-align: right;
             font-size: 1em;
             color: #444;
-            margin-top: 0; /* Reset margin from base styles if needed */
+            margin-top: 0;
         }
 
 
@@ -90,15 +90,15 @@
         }
 
         .day-checklist-header {
-            /* Removed Day Checklist Header Styles */
+            /* Removed Day Checklist Header Styles - will be styled in task item */
         }
 
         .day-label-container {
-            /* Removed Day Label Container Styles */
+            /* Removed Day Label Container Styles - will be styled in task item */
         }
 
         .day-checklist-header label {
-            /* Removed Day Checklist Header Label Styles */
+            /* Removed Day Checklist Header Label Styles - will be styled in task item */
         }
 
 
@@ -226,6 +226,7 @@
         .task-item:first-child .day-checklist-header {
             margin-bottom: 10px; /* Add bottom margin to day header in first task */
             justify-content: flex-end; /* Right align days header */
+            gap: 8px; /* Adjust gap between day columns */
         }
 
         .task-item:not(:first-child) .day-checklist-header {
@@ -235,14 +236,16 @@
 
         .task-item:first-child .day-checklist-header .day-label-container {
             display: flex;
-            flex-direction: column; /* Stack day text and checkbox */
+            flex-direction: column; /* Stack day text and checkbox - although checkbox is removed now */
             align-items: center; /* Center horizontally */
             position: relative; /* For positioning day label */
-            margin-left: 8px; /* Spacing between day columns in first row */
+            width: calc(100% / 6); /* Equal width for 6 days */
+            text-align: center; /* Center day text */
         }
 
+
         .task-item:first-child .day-checklist-header .day-label-container:first-child {
-             margin-left: 0; /* No left margin for first day column */
+             /* No specific styling for the first day column needed now */
         }
 
 
@@ -251,10 +254,10 @@
             color: #777;
             font-weight: bold;
             white-space: nowrap;
-            position: absolute; /* Position day text */
-            top: -22px; /* Adjust to position above checkbox */
-            right: 0; /* Align to right of checkbox */
-            text-align: center; /* Center text if needed */
+            position: static; /* Static positioning - no longer absolute */
+            top: auto; /* Reset top */
+            right: auto; /* Reset right */
+            display: block; /* Ensure label takes full width of container */
         }
 
 
@@ -270,13 +273,13 @@
 
             .header {
                 flex-direction: column;
-                align-items: center; /* Center header content on mobile */
-                text-align: center; /* Center text in header on mobile */
+                align-items: center;
+                text-align: center;
                 margin-bottom: 10px;
             }
 
             .header-left {
-                align-items: center; /* Center left header content on mobile */
+                align-items: center;
             }
 
             .header h1 {
@@ -288,13 +291,13 @@
             }
 
             .progress-container {
-                align-items: center; /* Center progress bar and points on mobile */
-                margin-top: 8px; /* Reduced margin on mobile header */
+                align-items: center;
+                margin-top: 8px;
             }
 
 
             .progress-bar {
-                margin-bottom: 3px; /* Reduced margin on mobile progress bar */
+                margin-bottom: 3px;
             }
 
 
@@ -303,17 +306,17 @@
             }
 
             .day-checklist-header {
-                justify-content: center; /* Center align day columns on mobile */
-                gap: 10px; /* Wider gap on mobile */
+                justify-content: space-around; /* Space days evenly on mobile */
+                gap: 0; /* Reset gap for even spacing */
             }
 
             .day-label-container {
-                /* Inherits flex-direction: column and align-items: center */
+                width: auto; /* Reset width for mobile */
             }
 
             .day-checklist-header label {
                 font-size: 0.9em;
-                position: static; /* Revert to static positioning on mobile */
+                position: static;
                 top: auto;
                 right: auto;
             }
@@ -341,7 +344,7 @@
             .day-checklist {
                  gap: 6px;
                  margin-top: 0;
-                 justify-content: center; /* Center checkboxes on mobile */
+                 justify-content: center;
             }
         }
 
@@ -357,7 +360,7 @@
                 font-size: 1.05em;
             }
             .progress-container {
-                 margin-top: 12px; /* Slightly larger margin for tablet header */
+                 margin-top: 12px;
             }
             .day-checklist-header label {
                 font-size: 1em;
@@ -406,27 +409,21 @@
                 <div class="day-checklist-header">
                     <div class="day-label-container">
                         <label>Mon</label>
-                        <label><input type="checkbox" class="day-checkbox"></label>
                     </div>
                     <div class="day-label-container">
                         <label>Tue</label>
-                        <label><input type="checkbox" class="day-checkbox"></label>
                     </div>
                     <div class="day-label-container">
                         <label>Wed</label>
-                        <label><input type="checkbox" class="day-checkbox"></label>
                     </div>
                     <div class="day-label-container">
                         <label>Thu</label>
-                        <label><input type="checkbox" class="day-checkbox"></label>
                     </div>
                     <div class="day-label-container">
                         <label>Fri</label>
-                        <label><input type="checkbox" class="day-checkbox"></label>
                     </div>
                     <div class="day-label-container">
                         <label>Sat</label>
-                        <label><input type="checkbox" class="day-checkbox"></label>
                     </div>
                 </div>
 
